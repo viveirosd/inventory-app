@@ -25,7 +25,8 @@ app.route('/').get(inventory.list)
    .post(inventory.create);
 app.get('/new', inventory.new);
 app.route('/:id').get(inventory.show)
-   .post(inventory.update);
+   .post(inventory.update)
+   .delete(inventory.delete);
 app.route('/:id/edit').get(inventory.edit);
 
 // catch 404 and forward to error handler
