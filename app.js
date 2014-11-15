@@ -21,13 +21,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//app.get('/', function(req, res) {
-//    res.render('index', {title: 'Express'});
-//});
 app.route('/').get(inventory.list)
    .post(inventory.create);
 app.get('/new', inventory.new);
-app.route('/:id').get(inventory.show);
+app.route('/:id').get(inventory.show)
+   .post(inventory.update);
+app.route('/:id/edit').get(inventory.edit);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
